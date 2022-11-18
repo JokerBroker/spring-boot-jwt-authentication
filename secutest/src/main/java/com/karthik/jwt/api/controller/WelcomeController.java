@@ -39,4 +39,19 @@ public class WelcomeController {
         }
         return jwtUtil.generateToken(authRequest.getUserName());
     }
+	@PutMapping("/update/{id}")
+	public String update(@PathVariable(value = "id") int id, @RequestBody User user) {
+		User u = userRepository.findById(id);
+		u.setUserName(user.getUserName());
+		u.setPassword(user.getPassword());
+		u.setEmail(user.getEmail());
+		u.setStock(user.getStock());
+		userRepository.save(u);
+		return "Changed Sucessfully";
+	}
+	@DeleteMapping("/delete/{id}")
+	public String delete(@PathVariable(value = "id") int id) {
+		userRepository.deleteById(id);
+		return "Deleted Sucessfully";
+	}
 }
