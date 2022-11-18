@@ -45,7 +45,6 @@ public class WelcomeController {
 		u.setUserName(user.getUserName());
 		u.setPassword(user.getPassword());
 		u.setEmail(user.getEmail());
-		u.setStock(user.getStock());
 		userRepository.save(u);
 		return "Changed Sucessfully";
 	}
